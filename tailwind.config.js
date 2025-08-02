@@ -1,12 +1,15 @@
-export const content = ["./app/**/*.{js,jsx,ts,tsx}", "./components/**/*.{js,jsx,ts,tsx}"];
-export const presets = [require("nativewind/preset")];
-export const theme = {
-  extend: {
-    colors:{
-      red:{
-        100: ''
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: ["./src/**/*.{js,jsx,ts,tsx}"],
+  presets: [require("nativewind/preset")],
+  theme: {
+    extend: {
+      colors:{
+        red:{
+          100: '#fee2e2'
+        }
       }
     }
   },
-};
-export const plugins = [];
+  plugins: [],
+}

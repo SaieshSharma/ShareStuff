@@ -1,0 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+    .tab-icon {
+        @apply flex min-w-20 items-center justify-center min-h-full gap-1 mt-12;
+    }
