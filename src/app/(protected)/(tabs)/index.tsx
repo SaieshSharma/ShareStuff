@@ -1,3 +1,5 @@
+import { useState, useEffect } from "react";
+
 import { formatDistanceToNowStrict } from "date-fns";
 import {
   Image,
@@ -8,11 +10,31 @@ import {
   View,
   FlatList
 } from "react-native";
-import posts from "../../../../assets/data/posts.json";
+// import posts from "../../../../assets/data/posts.json";
 import { StyleSheet } from "react-native";
 import PostListItem from "@/src/components/PostListItem";
 
+import {supabase} from "../../../lib/supabase"
+
 export default function HomeScreen() {
+
+const [posts, setPosts]= useState([])
+
+//runs when the component is first mounted
+useEffect(()=> {
+  fetchPosts();
+},[])
+
+const fetchPosts = async () => {
+  const {data , error} = await supabase
+  .from("posts")
+  .select("*")
+
+  console.log("error", error)
+  console.log("data", JSON.stringify(data, null, 2))
+  setPosts(data);
+}
+
  return (
 <FlatList 
 data = {posts}
